@@ -1,0 +1,56 @@
+body{
+    font-family: system-ui, sans-serif;
+    background: #f7f6f3;
+    color: #2c2c2a;
+    margin: 0;
+    padding: 2rem;
+}
+
+.page{
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+h1{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid #e0ded6;
+}
+
+th, td{
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid #e0ded6;
+    font-size: 0.9rem;
+}
+
+input{
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+}
+
+button{
+    padding: 6px 14px;
+    border: 1px solid #2c2c2a;
+    background: #2c2c2a;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+.delete-link{
+    color: #a32d2d;
+    font-size: 0.85rem;
+    text-decoration: none;
+}

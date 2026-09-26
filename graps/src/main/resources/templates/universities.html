@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Graduate Application Portal System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="page">
+    <h1>Universities</h1>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Program</th>
+            <th>Tuition</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="uni: ${universities}">
+            <td th:text="${uni.name}"></td>
+            <td th:text="${uni.country}"></td>
+            <td th:text="${uni.programName}"></td>
+            <td th:text="${uni.tuition}"></td>
+            <td>
+                <a th:href="@{/universities/{id}/delete(id=${uni.id})}" class="delete-link">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <form th:action="@{/universities/add}" method="post">
+                <td><input type="text" name="name" placeholder="University name" required></td>
+                <td><input type="text" name="country" placeholder="Country"></td>
+                <td><input type="text" name="programName" placeholder="Program name"></td>
+                <td><input type="number" step="0.01" name="tuition" placeholder="Tuition"></td>
+                <td><button type="submit">Add</button> </td>
+            </form>
+        </tr>
+        </tfoot>
+    </table>
+</div>
+
+</body>
+</html>
