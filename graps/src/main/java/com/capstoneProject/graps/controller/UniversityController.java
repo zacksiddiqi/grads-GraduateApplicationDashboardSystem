@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+//map string literal endpoint to controller
 @RequestMapping("/universities")
 
 public class UniversityController {
