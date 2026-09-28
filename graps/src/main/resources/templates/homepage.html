@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GRADS - Grad Application Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div class="site">
+
+    <nav class="navbar">
+        <div class="brand">GRADS</div>
+        <div class="nav-links">
+            <a th:href="@{/}">Home</a>
+            <a th:href="@{/universities/view}">Universities</a>
+            <a href="#">Applications</a>
+            <a href="#">About</a>
+        </div>
+        <button>Sign in</button>
+    </nav>
+
+    <section class="hero">
+        <h1>Track every application in one place</h1>
+        <p>Deadlines, documents, and recommenders for your Master's Applications</p>
+        <a th:href="@{/universities/view}"><button class="cta">Get started</button></a>
+    </section>
+
+    <section class= "stats">
+        <div class="stat-dash">
+            <p class="stat-label">Universities Tracked</p>
+            <p class="stat-number" th:attr="data-target=${universityCount}">0</p>
+        </div>
+        <div class="stat-dash">
+            <p class="stat-label">Applications in Progress</p>
+            <p class="stat-number" th:attr="data-target=${applicationCount}">0</p>
+        </div>
+        <div class="stat-dash">
+            <p class="stat-label">Upcoming Deadlines</p>
+            <p class="stat-number" th:attr="data-target=${upcomingDeadlines}">0</p>
+        </div>
+    </section>
+
+
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+body{
+    font-family: system-ui, sans-serif;
+    background: #f7f6f3;
+    color: #2c2c2a;
+    margin: 0;
+    padding: 2rem;
+}
+
+.page{
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+h1{
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+}
+
+table{
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border: 1px solid #e0ded6;
+}
+
+th, td{
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid #e0ded6;
+    font-size: 0.9rem;
+}
+
+input{
+    width: 100%;
+    padding: 6px 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    box-sizing: border-box;
+}
+
+button{
+    padding: 6px 14px;
+    border: 1px solid #2c2c2a;
+    background: #2c2c2a;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+.delete-link{
+    color: #a32d2d;
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    background: #fff;
+    border-bottom: 1px solid #e0ded6;
+}
+
+.brand {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    color: #5f5e5a;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 3rem 2rem;
+}
+
+.hero h1 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.hero p {
+    color: #5f5e5a;
+    margin-bottom: 1.25rem;
+}
+
+.cta {
+    padding: 10px 20px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding: 1.5rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.stat-card {
+    background: #fff;
+    border: 1px solid #e0ded6;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.85rem;
+    color: #5f5e5a;
+    margin: 0 0 6px;
+}
+
+.stat-number {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.about {
+    padding: 2rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 24px;
+    font-size: 0.8rem;
+    color: #999;
+    border-top: 1px solid #e0ded6;
+}
+
+.footer-links {
+    display: flex;
+    gap: 16px;
+}
