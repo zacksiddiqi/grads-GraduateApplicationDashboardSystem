@@ -8,6 +8,7 @@
 <body>
 
 <div class="page">
+    <a th:href="@{/}"><button>&larr; Back</button></a>
     <h1>Universities</h1>
 
     <table>
@@ -38,6 +39,8 @@
                 <td><input type="text" name="programName" placeholder="Program name"></td>
                 <td><input type="number" step="0.01" name="tuition" placeholder="Tuition"></td>
                 <td><button type="submit">Add</button> </td>
+                <td><button id="backBtn">Go back</button></td>
+
             </form>
         </tr>
         </tfoot>
