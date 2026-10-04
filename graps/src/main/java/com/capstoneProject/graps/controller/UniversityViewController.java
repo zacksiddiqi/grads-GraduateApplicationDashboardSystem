@@ -46,4 +46,43 @@ public class UniversityViewController {
         universityRepository.deleteById(id);
         return "redirect:/universities/view";
     }
+
+    @GetMapping("/{id}/edit")
+    public String showEditForm(@PathVariable Integer id, Model model){
+        University university = universityRepository.findById(id).orElse(null);
+        if (university == null){
+            return "redirect:/universities/view";
+        }
+        model.addAttribute("university", university);
+        return "edit-university";
+    }
+
+    @PostMapping("/{id}/update")
+    public String updateUniversity(@PathVariable Integer id,
+                                   @RequestParam String name,
+                                   @RequestParam(required = false) String country,
+                                   @RequestParam(required = false) String city,
+                                   @RequestParam(required = false) String state,
+                                   @RequestParam(required = false) String programName,
+                                   @RequestParam(required = false) String programUrl,
+                                   @RequestParam(required = false) Double tuition) {
+
+        University uni = universityRepository.findById(id).orElse(null);
+        if (uni == null){
+            return "redirect:/universities/view";
+        }
+        uni.setName(name);
+        uni.setCountry(country);
+        uni.setCity(city);
+        uni.setState(state);
+        uni.setProgramName(programName);
+        uni.setProgramUrl(programUrl);
+        if (tuition != null){
+            uni.setTuition(java.math.BigDecimal.valueOf(tuition));
+        }
+        universityRepository.save(uni);
+        return "redirect:/universities/view";
+
+    }
+
 }

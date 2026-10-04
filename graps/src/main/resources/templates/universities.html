@@ -10,7 +10,7 @@
 <div th:replace="~{fragments/navbar :: navbar}"></div>
 
 <div class="page">
-    
+
     <h1>Universities</h1>
 
     <table>
@@ -35,7 +35,7 @@
             <td th:text="${uni.programUrl}"></td>
             <td>€<span th:text="${uni.tuition}"></span></td>
             <td>
-<!--                <a th:hfef="@{universities/{id}/edit(id=${uni.id})}">Edit</a>-->
+                <a th:href="@{/universities/{id}/edit(id=${uni.id})}">Edit</a>
                 <a th:href="@{/universities/{id}/delete(id=${uni.id})}" class="delete-link">Delete</a>
             </td>
         </tr>
