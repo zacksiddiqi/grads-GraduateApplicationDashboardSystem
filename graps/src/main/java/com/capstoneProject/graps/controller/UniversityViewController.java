@@ -22,12 +22,18 @@ public class UniversityViewController {
     @PostMapping("/add")
     public String addUni(@RequestParam String name,
                          @RequestParam(required = false) String country,
+                         @RequestParam(required = false) String city,
+                         @RequestParam(required = false) String state,
                          @RequestParam(required = false) String programName,
+                         @RequestParam(required = false) String programUrl,
                          @RequestParam(required = false) Double tuition){
         University uni = new University();
         uni.setName(name);
         uni.setCountry(country);
+        uni.setCity(city);
+        uni.setState(state);
         uni.setProgramName(programName);
+        uni.setProgramUrl(programUrl);
         if (tuition != null){
             uni.setTuition(java.math.BigDecimal.valueOf(tuition));
         }

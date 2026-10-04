@@ -7,8 +7,10 @@
 </head>
 <body>
 
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
 <div class="page">
-    <a th:href="@{/}"><button>&larr; Back</button></a>
+    
     <h1>Universities</h1>
 
     <table>
@@ -16,17 +18,24 @@
         <tr>
             <th>Name</th>
             <th>Country</th>
+            <th>City</th>
+            <th>State</th>
             <th>Program</th>
-            <th>Tuition</th>
+            <th>URL</th>
+            <th>Tuition(€)</th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="uni: ${universities}">
             <td th:text="${uni.name}"></td>
             <td th:text="${uni.country}"></td>
+            <td th:text="${uni.city}"></td>
+            <td th:text="${uni.state}"></td>
             <td th:text="${uni.programName}"></td>
-            <td th:text="${uni.tuition}"></td>
+            <td th:text="${uni.programUrl}"></td>
+            <td>€<span th:text="${uni.tuition}"></span></td>
             <td>
+<!--                <a th:hfef="@{universities/{id}/edit(id=${uni.id})}">Edit</a>-->
                 <a th:href="@{/universities/{id}/delete(id=${uni.id})}" class="delete-link">Delete</a>
             </td>
         </tr>
@@ -34,12 +43,14 @@
         <tfoot>
         <tr>
             <form th:action="@{/universities/add}" method="post">
-                <td><input type="text" name="name" placeholder="University name" required></td>
+                <td><input type="text" name="name" placeholder="University" required></td>
                 <td><input type="text" name="country" placeholder="Country"></td>
+                <td><input type="text" name="city" placeholder="City"></td>
+                <td><input type="text" name="State" placeholder="State"></td>
                 <td><input type="text" name="programName" placeholder="Program name"></td>
+                <td><input type="text" name="programUrl" placeholder="URL"></td>
                 <td><input type="number" step="0.01" name="tuition" placeholder="Tuition"></td>
                 <td><button type="submit">Add</button> </td>
-                <td><button id="backBtn">Go back</button></td>
 
             </form>
         </tr>
