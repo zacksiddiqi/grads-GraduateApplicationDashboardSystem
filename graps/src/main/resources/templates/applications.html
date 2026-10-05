@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Graduate Application Portal System</title>
     <link rel="stylesheet" th:href="@{/css/style.css}">
 </head>
 <body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
 
 <div class="page">
      <h1>Applications</h1>
@@ -16,13 +18,62 @@
             <th>University</th>
             <th>Status</th>
             <th>Deadline</th>
-            <th>Date Submitted</th>
-            <th>Decision Date</th>
+<!--            <th>Date Submitted</th>-->
+<!--            <th>Decision Date</th>-->
             <th>Route</th>
             <th>Fee</th>
         </tr>
-
         </thead>
+        <tbody>
+        <tr th:each="app: ${applications}">
+            <td>
+               <a th:href="@{/universities/{id}(id=${app.university.id})}"
+                th:text="${app.university}"></a>
+            </td>
+            <td th:text="${app.status}"></td>
+            <td th:text="${app.deadline}"></td>
+<!--            <td th:text="${app.submittedDate}"></td>-->
+<!--            <td th:text="${app.decisionDate}"></td>-->
+            <td th:text="${app.route}"></td>
+            <td th:text="${app.fee}"></td>
+<!--            <td th:text="${app.notes}"></td>-->
+            <td>
+                <a th:href="@{/applications/{id}/delete(id=${app.id})}"
+                   class="delete-link">Delete</a>
+            </td>
+
+        </tr>
+        </tbody>
+        <tfoot>
+        <tr>
+            <form th:action="@{/applications/add}" method="post">
+                <td>
+                    <select name="universityId" required>
+                        <option value="" disabled selected>Select university</option>
+                        <option th:each="uni : ${universities}"
+                                th:value="${uni.id}"
+                                th:text="${uni.name}"></option>
+                    </select>
+                </td>
+                <td>
+                    <select name="status" required>
+                        <option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"></option>
+                    </select>
+                </td>
+                <td><input type="date" name="deadline"></td>
+<!--                <td><input type="date" name="submittedDate" placeholder="date" required></td>-->
+<!--                <td><input type="date" name="decisionDate" placeholder="date" required></td>-->
+                <td>
+                    <select name="route">
+                        <option value="" selected>-</option>
+                        <option th:each="r : ${routes}" th:value="${r}" th:text="${r}"></option>
+                    </select>
+                </td>
+                <td><input type="number" step="0.02" name="fee" placeholder="Fee"></td>
+                <td><button type="submit">Add</button></td>
+            </form>
+        </tr>
+        </tfoot>
 
     </table>
 </div>
