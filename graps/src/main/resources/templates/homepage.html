@@ -22,11 +22,11 @@
     <section class= "stats">
         <div class="stat-dash">
             <p class="stat-label">Universities Tracked</p>
-            <p class="stat-number" th:attr="data-target=${universityCount}">0</p>
+            <p class="stat-number" th:text="${universityCount}">0</p>
         </div>
         <div class="stat-dash">
             <p class="stat-label">Applications in Progress</p>
-            <p class="stat-number" th:attr="data-target=${applicationCount}">0</p>
+            <p class="stat-number" th:text="${applicationCount}">0</p>
         </div>
         <div class="stat-dash">
             <p class="stat-label">Upcoming Deadlines</p>

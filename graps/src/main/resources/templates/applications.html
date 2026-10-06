@@ -27,7 +27,7 @@
         <tbody>
         <tr th:each="app: ${applications}">
             <td>
-               <a th:href="@{/universities/{id}(id=${app.university.id})}"
+               <a th:href="@{/universities/{id}/view(id=${app.university.id})}"
                 th:text="${app.university.name}"></a>
             </td>
             <td th:text="${app.status}"></td>

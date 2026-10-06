@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>GRADS - View University by Id</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/navbar :: navbar}"></div>
+
+<div class="page">
+    <a th:href="@{/universities/view}">&larr; Back to Universities</a>
+    <h1 th:text="${university.name}"></h1>
+
+    <div class="by-id-view">
+        <p><strong>Country: </strong> <span th:text="${university.country}"></span></p>
+        <p><strong>City: </strong> <span th:text="${university.city}"></span></p>
+        <p><strong>State: </strong> <span th:text="${university.state}"></span></p>
+        <p><strong>Program: </strong> <span th:text="${university.programName}"></span></p>
+        <p><strong>Tuition: </strong> <span th:text="${university.tuition}"></span></p>
+        <p>
+            <strong>Program Link:</strong>
+            <a th:if="${university.programUrl != null and !university.programUrl.isEmpty()}"
+               th:href="${university.programUrl}"
+               target="blank"
+               rel="noopener noreferrer"
+                th:text="${university.programUrl}"></a>
+            <span th:unless="${university.programUrl != null and !university.programUrl.isEmpty()}">-</span>
+        </p>
+    </div>
+
+    <a th:href="@{/universities/{id}/edit(id=${university.id})}"><button>Edit</button></a>
+
+</div>
+
+</body>
+</html>

@@ -19,6 +19,16 @@ public class UniversityViewController {
         return "universities";
     }
 
+    @GetMapping("/{id}/view")
+    public String showUniversityById(@PathVariable Integer id, Model model){
+        University university = universityRepository.findById(id).orElse(null);
+        if(university == null){
+            return "redirect:/universities/view";
+        }
+        model.addAttribute("university",university);
+        return "university-id-page";
+    }
+
     @PostMapping("/add")
     public String addUni(@RequestParam String name,
                          @RequestParam(required = false) String country,
