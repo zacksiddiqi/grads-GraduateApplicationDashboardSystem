@@ -21,7 +21,7 @@
             <th>City</th>
             <th>State</th>
             <th>Program</th>
-            <th>URL</th>
+            <th>Link</th>
             <th>Tuition(€)</th>
         </tr>
         </thead>
@@ -32,7 +32,15 @@
             <td th:text="${uni.city}"></td>
             <td th:text="${uni.state}"></td>
             <td th:text="${uni.programName}"></td>
-            <td th:text="${uni.programUrl}"></td>
+            <td>
+                <a th:if="${uni.programUrl != null and !uni.programUrl.isEmpty()}"
+                   th:href="${uni.programUrl}"
+                   target="blank"
+                   rel="noopener noreferrer">
+                    <button type="button">Visit</button>
+                </a>
+                <span th:unless="${uni.programUrl != null and !uni.programUrl.isEmpty()}">-</span>
+            </td>
             <td>€<span th:text="${uni.tuition}"></span></td>
             <td>
                 <a th:href="@{/universities/{id}/edit(id=${uni.id})}">Edit</a>
