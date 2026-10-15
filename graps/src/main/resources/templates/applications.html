@@ -1,86 +1,79 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{main_layout}">
+      layout:decorate="~{main_layout}"
+      lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>Graduate Application Portal System</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Applications</title>
 </head>
 <body>
 
-<div th:replace="~{fragments/navbar :: navbar}"></div>
 
 <div layout:fragment="content">
-    <div class="page">
-         <h1>Applications</h1>
+    <h1 class="h3 mb-4">Applications</h1>
 
-        <table>
-            <thead>
-            <tr>
-                <th>University</th>
-                <th>Status</th>
-                <th>Deadline</th>
-    <!--            <th>Date Submitted</th>-->
-    <!--            <th>Decision Date</th>-->
-                <th>Route</th>
-                <th>Fee</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="app: ${applications}">
-                <td>
-                   <a th:href="@{/universities/{id}/view(id=${app.university.id})}"
-                    th:text="${app.university.name}"></a>
-                </td>
-                <td th:text="${app.status}"></td>
-                <td th:text="${app.deadline}"></td>
-    <!--            <td th:text="${app.submittedDate}"></td>-->
-    <!--            <td th:text="${app.decisionDate}"></td>-->
-                <td th:text="${app.route}"></td>
-                <td th:text="${app.fee}"></td>
-    <!--            <td th:text="${app.notes}"></td>-->
-                <td>
-                    <a th:href="@{/applications/{id}/delete(id=${app.id})}"
-                       class="delete-link">Delete</a>
-                </td>
-
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <form th:action="@{/applications/add}" method="post">
+    <div class="card border-0 shadow-sm">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                <tr>
+                    <th>University</th>
+                    <th>Status</th>
+                    <th>Deadline</th>
+                    <th>Route</th>
+                    <th>Fee</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="app : ${applications}">
                     <td>
-                        <select name="universityId" required>
-                            <option value="" disabled selected>Select university</option>
-                            <option th:each="uni : ${universities}"
-                                    th:value="${uni.id}"
-                                    th:text="${uni.name}"></option>
-                        </select>
+                        <a th:href="@{/universities/{id}/view(id=${app.university.id})}"
+                           th:text="${app.university.name}"
+                           class="text-decoration-none fw-medium"></a>
                     </td>
-                    <td>
-                        <select name="status" required>
-                            <option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"></option>
-                        </select>
+                    <td th:text="${app.status}"></td>
+                    <td th:text="${app.deadline}"></td>
+                    <td th:text="${app.route}"></td>
+                    <td th:text="${app.fee}"></td>
+                    <td class="text-end">
+                        <a th:href="@{/applications/{id}/delete(id=${app.id})}" class="btn btn-sm btn-outline-danger">Delete</a>
                     </td>
-                    <td><input type="date" name="deadline"></td>
-    <!--                <td><input type="date" name="submittedDate" placeholder="date" required></td>-->
-    <!--                <td><input type="date" name="decisionDate" placeholder="date" required></td>-->
-                    <td>
-                        <select name="route">
-                            <option value="" selected>-</option>
-                            <option th:each="r : ${routes}" th:value="${r}" th:text="${r}"></option>
-                        </select>
-                    </td>
-                    <td><input type="number" step="0.02" name="fee" placeholder="Fee"></td>
-                    <td><button type="submit">Add</button></td>
-                </form>
-            </tr>
-            </tfoot>
-
-        </table>
+                </tr>
+                </tbody>
+                <tfoot class="table-light">
+                <tr>
+                    <form th:action="@{/applications/add}" method="post">
+                        <td>
+                            <select name="universityId" class="form-select form-select-sm" required>
+                                <option value="" disabled selected>Select university</option>
+                                <option th:each="uni : ${universities}" th:value="${uni.id}" th:text="${uni.name}"></option>
+                            </select>
+                        </td>
+                        <td>
+                            <select name="status" class="form-select form-select-sm" required>
+                                <option th:each="s : ${statuses}" th:value="${s}" th:text="${s}"></option>
+                            </select>
+                        </td>
+                        <td><input type="date" name="deadline" class="form-control form-control-sm"></td>
+                        <td>
+                            <select name="route" class="form-select form-select-sm">
+                                <option value="" selected>-</option>
+                                <option th:each="r : ${routes}" th:value="${r}" th:text="${r}"></option>
+                            </select>
+                        </td>
+                        <td><input type="number" step="0.01" name="fee" placeholder="Fee" class="form-control form-control-sm"></td>
+                        <td class="text-end"><button type="submit" class="btn btn-sm btn-primary">Add</button></td>
+                    </form>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
     </div>
 </div>
+
+
 </body>
 </html>
