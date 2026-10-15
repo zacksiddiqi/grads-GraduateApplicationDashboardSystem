@@ -43,18 +43,24 @@
 
     </nav>
 
+    <!-- Main column -->
     <div class="content flex-grow-1">
 
+        <header class="bg-white shadow-sm px-4 py-2 d-flex align-items-center justify-content-between">
+            <button class="btn btn-outline-secondary btn-sm" id="sidebarToggle" type="button" aria-label="Toggle sidebar">
+                <i class="bi bi-list"></i>
+            </button>
+            <span class="text-secondary small">Grad Application Dashboard</span>
+        </header>
 
-
-
+        <main class="p-4">
+            <div layout:fragment="content"></div>
+        </main>
     </div>
-
-
-
-
-
 </div>
+
+
+
 
 
 

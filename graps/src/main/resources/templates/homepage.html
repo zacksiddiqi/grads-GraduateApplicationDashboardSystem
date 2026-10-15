@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{main_layout}">
 
 <head>
     <meta charset="UTF-8">
@@ -9,50 +11,52 @@
 </head>
 <body>
 
-<div class="site">
+<div layout:fragment="content">
+    <div class="site">
 
-    <div th:replace="~{fragments/navbar :: navbar}"></div>
+        <div th:replace="~{fragments/navbar :: navbar}"></div>
 
-    <section class="hero">
-        <h1>Track every application in one place</h1>
-        <p>Deadlines, documents, and recommenders for your Master's Applications</p>
-        <a th:href="@{/universities/view}"><button class="cta">Get started</button></a>
-    </section>
+        <section class="hero">
+            <h1>Track every application in one place</h1>
+            <p>Deadlines, documents, and recommenders for your Master's Applications</p>
+            <a th:href="@{/universities/view}"><button class="cta">Get started</button></a>
+        </section>
 
-    <section class= "stats">
-        <div class="stat-dash">
-            <p class="stat-label">Universities Tracked</p>
-            <p class="stat-number" th:text="${universityCount}">0</p>
-        </div>
-        <div class="stat-dash">
-            <p class="stat-label">Applications in Progress</p>
-            <p class="stat-number" th:text="${applicationCount}">0</p>
-        </div>
-        <div class="stat-dash">
-            <p class="stat-label">Upcoming Deadlines</p>
-            <p class="stat-number" th:attr="data-target=${upcomingDeadlines}">0</p>
-        </div>
-    </section>
+        <section class= "stats">
+            <div class="stat-dash">
+                <p class="stat-label">Universities Tracked</p>
+                <p class="stat-number" th:text="${universityCount}">0</p>
+            </div>
+            <div class="stat-dash">
+                <p class="stat-label">Applications in Progress</p>
+                <p class="stat-number" th:text="${applicationCount}">0</p>
+            </div>
+            <div class="stat-dash">
+                <p class="stat-label">Upcoming Deadlines</p>
+                <p class="stat-number" th:attr="data-target=${upcomingDeadlines}">0</p>
+            </div>
+        </section>
 
-    <section class="about">
-        <h2>About</h2>
-        <p>
-            GRADS - Graduate Application Dashboard System keeps
-            your grad school applications neat and organized. Manage Deadlines,
-            Documents, recommendation letters, and program requirements all one place!
-        </p>
-    </section>
+        <section class="about">
+            <h2>About</h2>
+            <p>
+                GRADS - Graduate Application Dashboard System keeps
+                your grad school applications neat and organized. Manage Deadlines,
+                Documents, recommendation letters, and program requirements all one place!
+            </p>
+        </section>
 
-    <footer>
-        <span>&copy; GRADS</span>
-        <div class="footer-links">
-            <span>Privacy</span><span>About</span><span>Gitlab</span>
-        </div>
-    </footer>
-
-
+        <footer>
+            <span>&copy; GRADS</span>
+            <div class="footer-links">
+                <span>Privacy</span><span>About</span><span>Gitlab</span>
+            </div>
+        </footer>
 
 
+
+
+    </div>
 </div>
 
 </body>
