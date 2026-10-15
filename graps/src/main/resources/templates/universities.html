@@ -1,74 +1,73 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{main_layout}">
+      layout:decorate="~{main_layout}"
+      lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Graduate Application Portal System</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Universities</title>
 </head>
 <body>
 
-<div th:replace="~{fragments/navbar :: navbar}"></div>
+
 
 <div layout:fragment="content">
-    <div class="page">
+    <h1 class="h3 mb-4">Universities</h1>
 
-        <h1>Universities</h1>
-
-        <table>
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Country</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Program</th>
-                <th>Link</th>
-                <th>Tuition(€)</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="uni: ${universities}">
-                <td th:text="${uni.name}"></td>
-                <td th:text="${uni.country}"></td>
-                <td th:text="${uni.city}"></td>
-                <td th:text="${uni.state}"></td>
-                <td th:text="${uni.programName}"></td>
-                <td>
-                    <a th:if="${uni.programUrl != null and !uni.programUrl.isEmpty()}"
-                       th:href="${uni.programUrl}"
-                       target="blank"
-                       rel="noopener noreferrer">
-                        <button type="button">Visit</button>
-                    </a>
-                    <span th:unless="${uni.programUrl != null and !uni.programUrl.isEmpty()}">-</span>
-                </td>
-                <td>€<span th:text="${uni.tuition}"></span></td>
-                <td>
-                    <a th:href="@{/universities/{id}/edit(id=${uni.id})}">Edit</a>
-                    <a th:href="@{/universities/{id}/delete(id=${uni.id})}" class="delete-link">Delete</a>
-                </td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <form th:action="@{/universities/add}" method="post">
-                    <td><input type="text" name="name" placeholder="University" required></td>
-                    <td><input type="text" name="country" placeholder="Country"></td>
-                    <td><input type="text" name="city" placeholder="City"></td>
-                    <td><input type="text" name="state" placeholder="State"></td>
-                    <td><input type="text" name="programName" placeholder="Program name"></td>
-                    <td><input type="text" name="programUrl" placeholder="URL"></td>
-                    <td><input type="number" step="0.01" name="tuition" placeholder="Tuition"></td>
-                    <td><button type="submit">Add</button> </td>
-
-                </form>
-            </tr>
-            </tfoot>
-        </table>
+    <div class="card border-0 shadow-sm">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                <tr>
+                    <th>Name</th>
+                    <th>Country</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Program</th>
+                    <th>Link</th>
+                    <th>Tuition (€)</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="uni : ${universities}">
+                    <td th:text="${uni.name}"></td>
+                    <td th:text="${uni.country}"></td>
+                    <td th:text="${uni.city}"></td>
+                    <td th:text="${uni.state}"></td>
+                    <td th:text="${uni.programName}"></td>
+                    <td>
+                        <a th:if="${uni.programUrl != null and !uni.programUrl.isEmpty()}"
+                           th:href="${uni.programUrl}"
+                           target="_blank" rel="noopener noreferrer"
+                           class="btn btn-sm btn-outline-primary">Visit</a>
+                        <span th:unless="${uni.programUrl != null and !uni.programUrl.isEmpty()}">-</span>
+                    </td>
+                    <td>€<span th:text="${uni.tuition}"></span></td>
+                    <td class="text-end">
+                        <a th:href="@{/universities/{id}/edit(id=${uni.id})}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                        <a th:href="@{/universities/{id}/delete(id=${uni.id})}" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot class="table-light">
+                <tr>
+                    <form th:action="@{/universities/add}" method="post">
+                        <td><input type="text" name="name" placeholder="University" class="form-control form-control-sm" required></td>
+                        <td><input type="text" name="country" placeholder="Country" class="form-control form-control-sm"></td>
+                        <td><input type="text" name="city" placeholder="City" class="form-control form-control-sm"></td>
+                        <td><input type="text" name="state" placeholder="State" class="form-control form-control-sm"></td>
+                        <td><input type="text" name="programName" placeholder="Program name" class="form-control form-control-sm"></td>
+                        <td><input type="text" name="programUrl" placeholder="URL" class="form-control form-control-sm"></td>
+                        <td><input type="number" step="0.01" name="tuition" placeholder="Tuition" class="form-control form-control-sm"></td>
+                        <td class="text-end"><button type="submit" class="btn btn-sm btn-primary">Add</button></td>
+                    </form>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
     </div>
 </div>
+
 </body>
 </html>
