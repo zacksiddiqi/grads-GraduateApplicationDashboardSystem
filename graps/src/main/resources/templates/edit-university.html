@@ -1,44 +1,49 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{main_layout}"
+      lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>GRADS - Edit Univesity</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Edit University</title>
 </head>
 <body>
 
-<div th:replace="~{fragments/navbar :: navbar}"></div>
-
-<div class="page">
-    <h1>Edit University</h1>
-    <form th:action="@{/universities/{id}/update(id=${university.id})}" method="post">
-        <label>Name</label>
-        <input type="text" name="name" th:value="${university.name}" required>
-
-        <label>Country</label>
-        <input type="text" name="country" th:value="${university.country}">
-
-        <label>City</label>
-        <input type="text" name="city" th:value="${university.city}">
-
-        <label>State</label>
-        <input type="text" name="state" th:value="${university.state}">
-
-        <label>Program</label>
-        <input type="text" name="programName" th:value="${university.programName}">
-
-        <label>Link</label>
-        <input type="text" name="programUrl" th:value="${university.programUrl}">
 
 
-        <label>Tuition</label>
-        <input type="number" step="0.01" name="tuition" th:value="${university.tuition}">
+<div layout:fragment="content">
 
-        <button type="submit">Save</button>
-        <a th:href="@{/universities/view}">Cancel</a>
+    <div class="page">
+        <h1>Edit University</h1>
+        <form th:action="@{/universities/{id}/update(id=${university.id})}" method="post">
+            <label>Name</label>
+            <input type="text" name="name" th:value="${university.name}" required>
 
-    </form>
+            <label>Country</label>
+            <input type="text" name="country" th:value="${university.country}">
+
+            <label>City</label>
+            <input type="text" name="city" th:value="${university.city}">
+
+            <label>State</label>
+            <input type="text" name="state" th:value="${university.state}">
+
+            <label>Program</label>
+            <input type="text" name="programName" th:value="${university.programName}">
+
+            <label>Link</label>
+            <input type="text" name="programUrl" th:value="${university.programUrl}">
+
+
+            <label>Tuition</label>
+            <input type="number" step="0.01" name="tuition" th:value="${university.tuition}">
+
+            <button type="submit">Save</button>
+            <a th:href="@{/universities/view}">Cancel</a>
+
+        </form>
+    </div>
 </div>
-
 </body>
 </html>

@@ -27,3 +27,13 @@ body { background: #f4f6fa; font-family: system-ui, -apple-system, "Segoe UI", s
     text-transform: uppercase;
     padding: 1rem 1.5rem .25rem;
 }
+
+.sidebar { flex-shrink: 0; }
+
+.bg-indigo { background: #4361ee; }
+.bg-teal   { background: #2ec4b6; }
+.bg-sky    { background: #10b9e8; }
+.bg-slate  { background: #6c757d; }
+
+.card { border-radius: 12px; }
+.chart-box { position: relative; height: 260px; }

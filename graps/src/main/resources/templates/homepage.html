@@ -2,62 +2,67 @@
 
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{main_layout}">
+      layout:decorate="~{main_layout}"
+      lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>GRADS - Grad Application Dashboard</title>
+    <title>Dashboard</title>
 <!--    <link rel="stylesheet" th:href="@{/css/style.css}">-->
 </head>
 <body>
 
 <div layout:fragment="content">
-    <div class="site">
+
 
 <!--        <div th:replace="~{fragments/navbar :: navbar}"></div>-->
+        <h1 class="h3 mb-4">Dashboard</h1>
 
-        <section class="hero">
-            <h1>Track every application in one place</h1>
-            <p>Deadlines, documents, and recommenders for your Master's Applications</p>
-            <a th:href="@{/universities/view}"><button class="cta">Get started</button></a>
-        </section>
-
-        <section class= "stats">
-            <div class="stat-dash">
-                <p class="stat-label">Universities Tracked</p>
-                <p class="stat-number" th:text="${universityCount}">0</p>
+        <div class="row g-3 mb-4">
+            <div class="col-md-4">
+                <div class="card stat-card bg-indigo">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="small">Universities tracked</div>
+                            <div class="fs-2 fw-semibold" th:text="${universityCount}">0</div>
+                        </div>
+                        <i class="bi bi-building stat-icon"></i>
+                    </div>
+                </div>
             </div>
-            <div class="stat-dash">
-                <p class="stat-label">Applications in Progress</p>
-                <p class="stat-number" th:text="${applicationCount}">0</p>
+            <div class="col-md-4">
+                <div class="card stat-card bg-teal">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="small">Total applications</div>
+                            <div class="fs-2 fw-semibold" th:text="${applicationCount}">0</div>
+                        </div>
+                        <i class="bi bi-journal-text stat-icon"></i>
+                    </div>
+                </div>
             </div>
-            <div class="stat-dash">
-                <p class="stat-label">Upcoming Deadlines</p>
-                <p class="stat-number" th:attr="data-target=${upcomingDeadlines}">0</p>
+            <div class="col-md-4">
+                <div class="card stat-card bg-slate">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="small">Upcoming deadlines</div>
+                            <div class="fs-2 fw-semibold" th:text="${upcomingDeadlines}">0</div>
+                        </div>
+                        <i class="bi bi-calendar-event stat-icon"></i>
+                    </div>
+                </div>
             </div>
-        </section>
+        </div>
 
-        <section class="about">
-            <h2>About</h2>
-            <p>
-                GRADS - Graduate Application Dashboard System keeps
-                your grad school applications neat and organized. Manage Deadlines,
-                Documents, recommendation letters, and program requirements all one place!
-            </p>
-        </section>
-
-        <footer>
-            <span>&copy; GRADS</span>
-            <div class="footer-links">
-                <span>Privacy</span><span>About</span><span>Gitlab</span>
+        <div class="card border-0 shadow-sm">
+            <div class="card-body">
+                <h2 class="h5">About</h2>
+                <p class="text-secondary mb-0">
+                    GRADS keeps your grad school applications organized: deadlines, documents,
+                    recommendation letters, and program requirements all in one place.
+                </p>
             </div>
-        </footer>
-
-
-
-
+        </div>
     </div>
-</div>
-
 </body>
 </html>

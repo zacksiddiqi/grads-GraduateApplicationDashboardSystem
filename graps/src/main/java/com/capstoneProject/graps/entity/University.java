@@ -43,6 +43,4 @@ public class University {
     @Column(precision = 10, scale = 2)
     private BigDecimal tuition;
 
-
-
 }
