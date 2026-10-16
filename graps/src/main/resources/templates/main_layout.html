@@ -29,7 +29,7 @@
             <li class="nav-item"><a class="nav-link" th:href="@{/applications/view}"><i class="bi bi-journal-text me-2"></i>Applications</a></li>
         </ul>
 
-        <div class="nav-section">Core</div>
+        <div class="nav-section">Tracking</div>
         <ul class="nav flex-column">
             <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-check2-square me-2"></i>Requirements</a></li>
             <li class="nav-item"><a class="nav-link" href="#"><i class="bi bi-person-lines-fill me-2"></i>Recommenders</a></li>
@@ -58,6 +58,15 @@
         </main>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    const app = document.getElementById('app');
+        if (window.innerWidth < 768) app.classList.add('sidebar-collapsed');
+        document.getElementById('sidebarToggle').addEventListener('click', () => {
+            app.classList.toggle('sidebar-collapsed');
+        });
+
+</script>
 
 
 
