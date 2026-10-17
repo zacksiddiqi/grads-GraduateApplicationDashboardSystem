@@ -16,12 +16,16 @@
         <div class="card-body">
             <form th:action="@{/applications/{id}/update(id=${application.id})}" method="post">
                 <div class="mb-3">
-                    <label class="form-label">University</label>
-                    <
+                    <label class="form-label">Status</label>
+                </div><div class="mb-3">
+                    <label class="form-label">Deadline</label>
+                </div><div class="mb-3">
+                    <label class="form-label">Route</label>
+                </div><div class="mb-3">
+                    <label class="form-label">Fee</label>
                 </div>
 
-
-
+                <a th:href="@{/applications/view}" class="btn">Cancel</a>
             </form>
 
 

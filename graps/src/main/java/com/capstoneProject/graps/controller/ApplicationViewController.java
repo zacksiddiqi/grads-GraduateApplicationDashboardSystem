@@ -68,9 +68,9 @@ public class ApplicationViewController {
 
     @PostMapping("/{id}/update")
     public String updateApplication(@PathVariable Integer id,
-                                    @RequestParam(required = false)ApplicationStatus status,
+                                    @RequestParam(required = true)ApplicationStatus status,
                                     @RequestParam(required = false)LocalDate deadline,
-                                    @RequestParam(required = false)RouteType route,
+                                    @RequestParam(required = true)RouteType route,
                                     @RequestParam(required = false)Double fee){
         Application app = applicationRepository.findById(id).orElse(null);
         if (app == null){
