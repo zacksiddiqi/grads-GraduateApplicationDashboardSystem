@@ -58,6 +58,16 @@ public class ApplicationViewController {
         return "redirect:/applications/view";
     }
 
+    @GetMapping("/{id}/edit")
+    public String showEditForm(@PathVariable Integer id, Model model){
+        Application application = applicationRepository.findById(id).orElse(null);
+        if (application == null){
+            return "redirect:/applications/view";
+        }
+        model.addAttribute("application", application);
+        return "edit-application";
+    }
+
     @GetMapping("/{id}/delete")
     public String deleteApplication(@PathVariable Integer id){
         applicationRepository.deleteById(id);

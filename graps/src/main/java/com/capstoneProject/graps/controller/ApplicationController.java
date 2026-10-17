@@ -56,39 +56,39 @@ public class ApplicationController {
 
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<Application> updateApplication(@PathVariable Integer id, @RequestBody ApplicationRequest request) {
-//        Application existing = applicationRepository.findById(id).orElse(null);
-//        if (existing == null) {
-//            return ResponseEntity.badRequest().build();
-//        }
-//
-//        if (request.getUniversityId() != null) {
-//            University university = universityRepository.findById(request.getUniversityId()).orElse(null);
-//            if (university == null) {
-//                return ResponseEntity.badRequest().build();
-//            }
-//            existing.setUniversity(university);
-//        }
-//        existing.setStatus(request.getStatus());
-//        existing.setDeadline(request.getDeadline());
-//        existing.setSubmittedDate(request.getSubmittedDate());
-//        existing.setDecisionDate(request.getDecisionDate());
-//        existing.setRoute(request.getRoute());
-//        existing.setFee(request.getFee());
-//        existing.setNotes(request.getNotes());
-//
-//        Application updated = applicationRepository.save(existing);
-//        return ResponseEntity.ok(updated);
-//    }
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<void> deleteApplication(@PathVariable Integer id){
-//        if(!applicationRepository.existsById(id)){
-//            return ResponseEntity.notFound().build();
-//        }
-//        applicationRepository.deleteById(id);
-//        return ResponseEntity.noContent().build();
-//    }
+    @PutMapping("/{id}")
+    public ResponseEntity<Application> updateApplication(@PathVariable Integer id, @RequestBody ApplicationRequest request) {
+        Application existing = applicationRepository.findById(id).orElse(null);
+        if (existing == null) {
+            return ResponseEntity.badRequest().build();
+        }
+
+        if (request.getUniversityId() != null) {
+            University university = universityRepository.findById(request.getUniversityId()).orElse(null);
+            if (university == null) {
+                return ResponseEntity.badRequest().build();
+            }
+            existing.setUniversity(university);
+        }
+        existing.setStatus(request.getStatus());
+        existing.setDeadline(request.getDeadline());
+        existing.setSubmittedDate(request.getSubmittedDate());
+        existing.setDecisionDate(request.getDecisionDate());
+        existing.setRoute(request.getRoute());
+        existing.setFee(request.getFee());
+        existing.setNotes(request.getNotes());
+
+        Application updated = applicationRepository.save(existing);
+        return ResponseEntity.ok(updated);
+    }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteApplication(@PathVariable Integer id){
+        if(!applicationRepository.existsById(id)){
+            return ResponseEntity.notFound().build();
+        }
+        applicationRepository.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 
 
 

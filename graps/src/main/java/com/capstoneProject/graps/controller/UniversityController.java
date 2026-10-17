@@ -16,11 +16,13 @@ public class UniversityController {
     @Autowired
     private UniversityRepository universityRepository;
 
+    //Gets all the Universities in the MariaDB in JSON
     @GetMapping
     public List<University> getAllUnis(){
         return universityRepository.findAll();
     }
 
+    //Gets a University by id in MariaDB in JSON
     @GetMapping("/{id}")
     public University getUniById(@PathVariable Integer id){
         return universityRepository.findById(id).orElse(null);

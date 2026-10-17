@@ -39,6 +39,7 @@
                     <td th:text="${app.route}"></td>
                     <td th:text="${app.fee}"></td>
                     <td class="text-end">
+                        <a th:href="@{/applications/{id}/edit(id=${app.id})}" class="btn btn-sm btn-outline-warning">Edit</a>
                         <a th:href="@{/applications/{id}/delete(id=${app.id})}" class="btn btn-sm btn-outline-danger">Delete</a>
                     </td>
                 </tr>
