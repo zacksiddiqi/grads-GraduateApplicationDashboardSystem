@@ -45,11 +45,11 @@ public class ApplicationController {
         application.setUniversity(university);
         application.setStatus(request.getStatus());
         application.setDeadline(request.getDeadline());
-        application.setSubmittedDate(request.getSubmittedDate());
-        application.setDecisionDate(request.getDecisionDate());
+//        application.setSubmittedDate(request.getSubmittedDate());
+//        application.setDecisionDate(request.getDecisionDate());
         application.setRoute(request.getRoute());
         application.setFee(request.getFee());
-        application.setNotes(request.getNotes());
+//        application.setNotes(request.getNotes());
 
         Application saved = applicationRepository.save(application);
         return ResponseEntity.ok(saved);
@@ -72,11 +72,11 @@ public class ApplicationController {
         }
         existing.setStatus(request.getStatus());
         existing.setDeadline(request.getDeadline());
-        existing.setSubmittedDate(request.getSubmittedDate());
-        existing.setDecisionDate(request.getDecisionDate());
+//        existing.setSubmittedDate(request.getSubmittedDate());
+//        existing.setDecisionDate(request.getDecisionDate());
         existing.setRoute(request.getRoute());
         existing.setFee(request.getFee());
-        existing.setNotes(request.getNotes());
+//        existing.setNotes(request.getNotes());
 
         Application updated = applicationRepository.save(existing);
         return ResponseEntity.ok(updated);

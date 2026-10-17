@@ -32,11 +32,11 @@ public class Application {
 
     private LocalDate deadline;
 
-    @Column(name = "submitted_date")
-    private LocalDate submittedDate;
+//    @Column(name = "submitted_date")
+//    private LocalDate submittedDate;
 
-    @Column(name = "decision_date")
-    private LocalDate decisionDate;
+//    @Column(name = "decision_date")
+//    private LocalDate decisionDate;
 
     @Enumerated(EnumType.STRING)
     private RouteType route;
@@ -44,7 +44,7 @@ public class Application {
     @Column(precision = 5, scale = 2)
     private BigDecimal fee;
 
-    @Column(columnDefinition = "text")
-    private String notes;
+//    @Column(columnDefinition = "text")
+//    private String notes;
 
 }

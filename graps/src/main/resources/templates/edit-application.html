@@ -10,7 +10,26 @@
 <body>
 
 <div layout:fragment="content">
-    <h1>Edit application page</h1>
+    <h1 class="h3 mb-4">Edit application</h1>
+
+    <div class="card border-0 shadow-sm" style="max-width: 560px;">
+        <div class="card-body">
+            <form th:action="@{/applications/{id}/update(id=${application.id})}" method="post">
+                <div class="mb-3">
+                    <label class="form-label">University</label>
+                    <
+                </div>
+
+
+
+            </form>
+
+
+        </div>
+
+
+    </div>
+
 </div>
 
 </body>

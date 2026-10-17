@@ -15,9 +15,6 @@ public class ApplicationRequest {
     private Integer universityId;
     private ApplicationStatus status;
     private LocalDate Deadline;
-    private LocalDate submittedDate;
-    private LocalDate decisionDate;
     private RouteType route;
     private BigDecimal fee;
-    private String notes;
 }

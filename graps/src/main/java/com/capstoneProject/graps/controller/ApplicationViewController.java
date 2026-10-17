@@ -38,8 +38,7 @@ public class ApplicationViewController {
                                     @RequestParam ApplicationStatus status,
                                     @RequestParam(required = false)LocalDate deadline,
                                     @RequestParam(required = false) RouteType route,
-                                    @RequestParam(required = false) Double fee,
-                                    @RequestParam(required = false) String notes){
+                                    @RequestParam(required = false) Double fee){
         University university = universityRepository.findById(universityId).orElse(null);
         if (university == null){
             return "redirect:/applications/view";
@@ -53,7 +52,6 @@ public class ApplicationViewController {
         if (fee != null){
             application.setFee(BigDecimal.valueOf(fee));
         }
-        application.setNotes(notes);
         applicationRepository.save(application);
         return "redirect:/applications/view";
     }
@@ -67,6 +65,29 @@ public class ApplicationViewController {
         model.addAttribute("application", application);
         return "edit-application";
     }
+
+    @PostMapping("/{id}/update")
+    public String updateApplication(@PathVariable Integer id,
+                                    @RequestParam(required = false)ApplicationStatus status,
+                                    @RequestParam(required = false)LocalDate deadline,
+                                    @RequestParam(required = false)RouteType route,
+                                    @RequestParam(required = false)Double fee){
+        Application app = applicationRepository.findById(id).orElse(null);
+        if (app == null){
+            return "redirect:/applications/view";
+        }
+        //mapping the changed values to the setter method
+        app.setStatus(status);
+        app.setDeadline(deadline);
+        app.setRoute(route);
+        if (fee != null){
+            app.setFee(java.math.BigDecimal.valueOf(fee));
+        }
+        applicationRepository.save(app);
+        return "redirect:/applications/view";
+    }
+
+
 
     @GetMapping("/{id}/delete")
     public String deleteApplication(@PathVariable Integer id){
