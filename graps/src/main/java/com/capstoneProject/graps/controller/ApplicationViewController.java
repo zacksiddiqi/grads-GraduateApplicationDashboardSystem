@@ -58,19 +58,20 @@ public class ApplicationViewController {
 
     @GetMapping("/{id}/edit")
     public String showEditForm(@PathVariable Integer id, Model model){
-        Application application = applicationRepository.findById(id).orElse(null);
-        if (application == null){
+        Application app = applicationRepository.findById(id).orElse(null);
+        if (app == null){
             return "redirect:/applications/view";
         }
-        model.addAttribute("application", application);
+        model.addAttribute("app", app);
+        model.addAttribute("statuses", ApplicationStatus.values());
         return "edit-application";
     }
 
     @PostMapping("/{id}/update")
     public String updateApplication(@PathVariable Integer id,
-                                    @RequestParam(required = true)ApplicationStatus status,
+                                    @RequestParam(required = false)ApplicationStatus status,
                                     @RequestParam(required = false)LocalDate deadline,
-                                    @RequestParam(required = true)RouteType route,
+                                    @RequestParam(required = false)RouteType route,
                                     @RequestParam(required = false)Double fee){
         Application app = applicationRepository.findById(id).orElse(null);
         if (app == null){

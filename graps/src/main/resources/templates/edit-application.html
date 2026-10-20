@@ -14,17 +14,25 @@
 
     <div class="card border-0 shadow-sm" style="max-width: 560px;">
         <div class="card-body">
-            <form th:action="@{/applications/{id}/update(id=${application.id})}" method="post">
+            <form th:action="@{/applications/{id}/update(id=${app.id})}" method="post">
+                <strong><u><span th:text="${app.university.name}"></span></u></strong>
                 <div class="mb-3">
-                    <label class="form-label">Status</label>
+                    <label class="form-label">Status: </label>
+                    <select name="status" required>
+                        <option th:each="s : ${statuses}"
+                                th:value="${s}"
+                                th:text="${s}"
+                                th:selected="${s == app.status}"></option>
+                    </select>
                 </div><div class="mb-3">
                     <label class="form-label">Deadline</label>
                 </div><div class="mb-3">
                     <label class="form-label">Route</label>
                 </div><div class="mb-3">
                     <label class="form-label">Fee</label>
+                    <input type="number" step="0.01" name="fee" th:value="${app.fee}" class="form-control">
                 </div>
-
+                <button type="submit" class="btn">Save</button>
                 <a th:href="@{/applications/view}" class="btn">Cancel</a>
             </form>
 
