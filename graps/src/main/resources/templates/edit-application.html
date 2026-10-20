@@ -25,9 +25,17 @@
                                 th:selected="${s == app.status}"></option>
                     </select>
                 </div><div class="mb-3">
-                    <label class="form-label">Deadline</label>
+                    <label class="form-label">Deadline: </label>
+                    <input type="date" name="deadline" th:value="${app.deadline}" class="form-control form-control-sm">
                 </div><div class="mb-3">
-                    <label class="form-label">Route</label>
+                    <label class="form-label">Route: </label>
+                    <select name="route">
+                        <option value="" th:selected="${app.route == null}">-</option>
+                        <option th:each="r : ${routes}"
+                                th:value="${r}"
+                                th:text="${r}"
+                                th:selected="${r == app.route}"></option>
+                    </select>
                 </div><div class="mb-3">
                     <label class="form-label">Fee</label>
                     <input type="number" step="0.01" name="fee" th:value="${app.fee}" class="form-control">

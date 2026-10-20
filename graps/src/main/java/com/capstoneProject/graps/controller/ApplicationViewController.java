@@ -64,6 +64,7 @@ public class ApplicationViewController {
         }
         model.addAttribute("app", app);
         model.addAttribute("statuses", ApplicationStatus.values());
+        model.addAttribute("routes", RouteType.values());
         return "edit-application";
     }
 
