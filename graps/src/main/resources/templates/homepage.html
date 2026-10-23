@@ -19,7 +19,7 @@
         <h1 class="h3 mb-4">Dashboard</h1>
 
         <div class="row g-3 mb-4">
-            <div class="col-md-4">
+            <div class="col-md-6 col-xl-3">
                 <div class="card stat-card bg-indigo">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6 col-xl-3">
                 <div class="card stat-card bg-teal">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div>
@@ -41,7 +41,18 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6 col-xl-3">
+                <div class="card stat-card bg-sky">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div>
+                            <div class="small">In progress</div>
+                            <div class="fs-2 fw-semibold" th:text="${inProgressCount}">0</div>
+                        </div>
+                        <i class="bi bi-hourglass-split stat-icon"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3">
                 <div class="card stat-card bg-slate">
                     <div class="card-body d-flex justify-content-between align-items-center">
                         <div>
@@ -53,6 +64,18 @@
                 </div>
             </div>
         </div>
+        //Bar chart of Applications by status
+        <div class="row g-3 mb-4">
+            <div class="col-lg-7">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-white fw-semibold">
+                        <i class="bi bi-bar-chart-fill me-2"></i>Applications by status
+                    </div>
+                    <div class="card-body">
+                        <div class="chart-box"><canvas id="statusChart"></canvas></div>
+                    </div>
+                </div>
+            </div>
 
         <div class="card border-0 shadow-sm">
             <div class="card-body">
@@ -63,6 +86,30 @@
                 </p>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+        <script th:inline="javascript">
+            const statusLabels = /*[[${statusLabels}]]*/ [];
+            const statusData   = /*[[${statusData}]]*/ [];
+            const routeData    = /*[[${routeData}]]*/ [];
+
+            new Chart(document.getElementById('statusChart'), {
+                type: 'bar',
+                data: {
+                    labels: statusLabels,
+                    datasets: [{
+                        data: statusData,
+                        backgroundColor: ['#6c757d', '#4361ee', '#10b9e8', '#ffc107', '#198754', '#dc3545'],
+                        borderRadius: 6
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } }
+                }
+            });
+        </script>
     </div>
+</div>
 </body>
 </html>

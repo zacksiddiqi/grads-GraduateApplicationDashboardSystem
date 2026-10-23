@@ -60,11 +60,21 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+    //Collapse Sidebar - Claude
     const app = document.getElementById('app');
         if (window.innerWidth < 768) app.classList.add('sidebar-collapsed');
         document.getElementById('sidebarToggle').addEventListener('click', () => {
             app.classList.toggle('sidebar-collapsed');
         });
+    // Highlight the sidebar link for the current page - Claude
+    document.querySelectorAll('.sidebar a.nav-link').forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href || href === '#') return;
+        const path = new URL(link.href).pathname;
+        const here = window.location.pathname;
+        const active = path === '/' ? here === '/' : here.startsWith(path.replace(/\/view$/, ''));
+        if (active) link.classList.add('active');
+    });
 
 </script>
 

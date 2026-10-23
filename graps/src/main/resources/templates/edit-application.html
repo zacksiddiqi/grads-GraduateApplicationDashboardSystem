@@ -26,7 +26,7 @@
                     </select>
                 </div><div class="mb-3">
                     <label class="form-label">Deadline: </label>
-                    <input type="date" name="deadline" th:value="${app.deadline}" class="form-control form-control-sm">
+                    <input type="date" name="deadline" th:value="${app.deadline}" th:min="${today}" class="form-control form-control-sm">
                 </div><div class="mb-3">
                     <label class="form-label">Route: </label>
                     <select name="route">

@@ -30,6 +30,8 @@ public class ApplicationViewController {
         model.addAttribute("universities", universityRepository.findAll());
         model.addAttribute("statuses", ApplicationStatus.values());
         model.addAttribute("routes", RouteType.values());
+        //ensures a past date cannot be selected by the user
+        model.addAttribute("today", LocalDate.now());
         return "applications";
     }
 
@@ -65,6 +67,8 @@ public class ApplicationViewController {
         model.addAttribute("app", app);
         model.addAttribute("statuses", ApplicationStatus.values());
         model.addAttribute("routes", RouteType.values());
+        //ensures a past date cannot be selected by the user
+        model.addAttribute("today", LocalDate.now());
         return "edit-application";
     }
 

@@ -1,35 +1,23 @@
 body { background: #f4f6fa; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
 
-.sidebar { width: 240px; min-height: 100vh; transition: margin-left .2s; }
+.sidebar { width: 240px; min-height: 100vh; transition: margin-left .2s; flex-shrink: 0; }
+.sidebar .nav-section {
+    color: #6c757d; font-size: .7rem; letter-spacing: .08em;
+    text-transform: uppercase; padding: 1rem 1.5rem .25rem;
+}
 .sidebar .nav-link {
-    color: #adb5bd;
-    padding: .75rem 1.5rem;
-    border-left: 3px solid transparent;
+    color: #adb5bd; padding: .7rem 1.5rem; border-left: 3px solid transparent;
 }
 .sidebar .nav-link:hover,
 .sidebar .nav-link.active {
-    color: #fff;
-    background: rgba(255, 255, 255, .08);
-    border-left-color: #4361ee;
+    color: #fff; background: rgba(255, 255, 255, .08); border-left-color: #4361ee;
 }
-
 #app.sidebar-collapsed .sidebar { margin-left: -240px; }
 
 .content { min-width: 0; }
 
 .stat-card { border: 0; border-radius: 12px; color: #fff; }
 .stat-card .stat-icon { font-size: 2.5rem; opacity: .4; }
-
-.sidebar .nav-section {
-    color: #6c757d;
-    font-size: .7rem;
-    letter-spacing: .08em;
-    text-transform: uppercase;
-    padding: 1rem 1.5rem .25rem;
-}
-
-.sidebar { flex-shrink: 0; }
-
 .bg-indigo { background: #4361ee; }
 .bg-teal   { background: #2ec4b6; }
 .bg-sky    { background: #10b9e8; }
